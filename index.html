@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>:valid vs :user-valid</title>
+  <style>
+    body {
+      max-width: 400px;
+      padding: 32px;
+    }
+    input {
+      border: 3px solid gray;
+      outline: none;
+    }
+
+    .regular {
+      &:valid {
+        border-color: green;
+      }
+      &:invalid {
+        border-color: red
+      }
+    }
+
+    .new {
+      &:user-valid {
+        border-color: green;
+      }
+      &:user-invalid {
+        border-color: red
+      }
+    }
+
+  </style>
+</head>
+<body>
+<header>
+  <h1>:valid vs :user-valid</h1>
+</header>
+<main>
+<article>
+  <h2>:valid and :invalid, states are applied even if user does not touch the inputs</h2>
+  Dependent on the browser, the state can be valid to the moment when user starts to change anything
+  <p>
+    <label for="emailRegular">Email </label><input id="emailRegular" class="regular" type="email" required value="test@test.pl">
+    <br>
+    <label for="textRegular">Text, 3 to 5 letters</label><input id="textRegular" class="regular" type="text" minlength="3" maxlength="5" required value="te">
+  </p>
+</article>
+<article>
+  <h2>:user-valid and :user-invalid, states are applied after user changes something</h2>
+  Change something and unclick to apply the changes
+  <p>
+    <label for="emailNew">Email </label><input id="emailNew" class="new" type="email" required value="test@test.pl">
+    <br>
+    <label for="textNew">Text, 3 to 5 letters</label><input id="textNew" class="new" type="text" minlength="3" maxlength="5" required value="te">
+  </p>
+</article>
+</main>
+</body>
+</html>
